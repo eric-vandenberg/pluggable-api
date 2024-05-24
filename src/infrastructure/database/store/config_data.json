@@ -1,0 +1,55 @@
+[
+  {
+    "id": "ba8adec7-466d-49e5-9e0e-a567bc5479df",
+    "platform": "platformA",
+    "version": "0.1.7",
+    "api": "/v3",
+    "create_map": {
+      "type": "object",
+      "properties": {
+        "header": { "type": "string" },
+        "rating": { "type": "string" },
+        "summary": { "type": "string" },
+        "recommendation": { "type": "boolean" }
+      },
+      "required": ["header", "rating", "summary"]
+    },
+    "fetch_map": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "rating": { "type": "number" },
+        "description": { "type": "string" }
+      },
+      "required": ["title", "rating", "description"]
+    },
+    "updated_at": "2024-05-24T09:59:52.388Z",
+    "created_at": "2024-05-24T09:59:52.388Z"
+  },
+  {
+    "id": "ea5a0fe5-586b-4047-8d34-7e9b5425be13",
+    "platform": "platformB",
+    "version": "2.0.4",
+    "api": "/v2",
+    "create_map": {
+      "type": "object",
+      "properties": {
+        "subject": { "type": "string" },
+        "rating": { "type": "string" },
+        "details": { "type": "string" }
+      },
+      "required": ["subject", "rating", "details"]
+    },
+    "fetch_map": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "rating": { "type": "number" },
+        "description": { "type": "string" }
+      },
+      "required": ["title", "rating", "description"]
+    },
+    "updated_at": "2024-05-24T10:23:09.033Z",
+    "created_at": "2024-05-24T10:23:09.033Z"
+  }
+]

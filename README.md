@@ -1,72 +1,56 @@
-<!--
-title: 'AWS TypeScript Example'
-description: 'This template demonstrates how to deploy a TypeScript function running on AWS Lambda using Serverless Framework.'
-layout: Doc
-framework: v3
-platform: AWS
-language: nodeJS
-priority: 1
-authorLink: 'https://github.com/serverless'
-authorName: 'Serverless, inc.'
-authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
--->
+## Pluggable Api
 
+## Engine
 
-# Serverless Framework AWS TypeScript Example
+- Node >= 20.12.0
+- NPM >= 10.5.0
 
-This template demonstrates how to deploy a TypeScript function running on AWS Lambda using Serverless Framework. The deployed function does not include any event definitions as well as any kind of persistence (database). For more advanced configurations check out the [examples repo](https://github.com/serverless/examples/) which includes integrations with SQS, DynamoDB or examples of functions that are triggered in `cron`-like manner. For details about configuration of specific `events`, please refer to our [documentation](https://www.serverless.com/framework/docs/providers/aws/events/).
+## Install
 
-## Usage
-
-### Deployment
-
-In order to deploy the example, you need to run the following command:
-
-```
-$ serverless deploy
+```sh
+git clone git@github.com:eric-vandenberg/pluggable-api.git
+cd pluggable-api
+npm i
 ```
 
-After running deploy, you should see output similar to:
+## Setup
 
-```bash
-Deploying aws-node-typescript to stage dev (us-east-1)
-
-✔ Service deployed to stack aws-node-typescript-dev (112s)
-
-functions:
-  hello: aws-node-typescript-dev-hello (806 B)
+```sh
+mv .env.template .env
 ```
 
-### Invocation
+## Run
 
-After successful deployment, you can invoke the deployed function by using the following command:
-
-```bash
-serverless invoke --function hello
+```sh
+npm run start:dev
 ```
 
-Which should result in response similar to the following:
+## Make Requests
 
-```json
-{
-    "message": "Go Serverless v3! Your function executed successfully!",
-    "input": {}
-}
-```
-
-### Local development
-
-You can invoke your function locally by using the following command:
-
-```bash
-serverless invoke local --function hello
-```
-
-Which should result in response similar to the following:
+### GET /platform/:platformId/reviews
 
 ```
-{
-    "message": "Go Serverless v3! Your function executed successfully!",
-    "input": {}
-}
+npm run bin:get platformA
+npm run bin:get platformB
+npm run bin:get unsupported
 ```
+
+### POST /platform/:platformId/reviews
+
+```
+npm run bin:create platformA
+npm run bin:create platformB
+npm run bin:create unsupported
+```
+
+## Architecture
+
+- Node, Express, Typescript
+- Clean Architecture
+
+## Notes
+
+- Faker & Factory.ts were used as generators to fake data from providers
+- Add support for a new platform by creating one file in `src/infrastructure/providers/platform/` which implements PlatformProvider
+- The production bundle needs fixing due to the dynamic importing of platform providers
+- In a real world application, the dbClient would be instantiated once as a singleton

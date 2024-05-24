@@ -1,7 +1,45 @@
 {
-  "devDependencies": {
-    "esbuild": "^0.14.25",
-    "serverless-esbuild": "^1.25.0"
+  "name": "pluggable-api",
+  "version": "1.0.0",
+  "description": "flexible and extendable backend API for querying review platforms",
+  "main": "./dist/app.js",
+  "engines": {
+    "node": ">=20.12.0",
+    "npm": ">=10.5.0"
   },
-  "name": "pluggable-api"
+  "scripts": {
+    "build": "tsup",
+    "start": "node ./dist/app.js",
+    "start:dev": "ts-node-dev --respawn --clear --transpile-only --ignore-watch node_modules ./src/presentation/server/app.ts",
+    "bin:create": "./bin/create.sh",
+    "bin:get": "./bin/get_all.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eric-vandenberg/pluggable-api.git"
+  },
+  "keywords": [],
+  "author": "Eric Vandenberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eric-vandenberg/pluggable-api/issues"
+  },
+  "homepage": "https://github.com/eric-vandenberg/pluggable-api#readme",
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.2.0",
+    "factory.ts": "^1.4.1",
+    "http-status-codes": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.12",
+    "json-schema-to-ts": "^3.1.0",
+    "prettier": "^3.2.5",
+    "ts-node-dev": "^2.0.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  }
 }
